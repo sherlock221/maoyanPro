@@ -7,7 +7,7 @@ const CONFIG = {
 
     //猫眼api地址
     //API : "http://m.maoyan.com"
-    API : "http://192.168.1.100:8081/App/data"
+    API : "http://192.168.1.108:8081/App/data"
 }
 
 

@@ -12,7 +12,6 @@ import React from 'react-native'
 import MovieView from "./App/View/Movie/MovieIndexView";
 import CinemaView from "./App/View/Cinema/CinemaView";
 
-
 /**
  * 解构声明(需要使用的类)
  */
@@ -27,19 +26,6 @@ var {
     } = React;
 
 
-class Text2 extends Component {
-
-    render(){
-        return (
-            <View>
-                <Text>123</Text>
-            </View>
-        );
-    }
-}
-
-
-
 
 /**
  * 项目启动类继承自 React.Component
@@ -49,7 +35,6 @@ class _11Game extends Component {
     statics:{
 
         }
-
 
     //构造函数(组件挂载之前)
     constructor(props) {

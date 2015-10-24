@@ -11,7 +11,6 @@ var {
     Component,
     ListView,
     Image,
-    ActivityIndicatorIOS,
     TouchableHighlight,
     ScrollView,
     } = React;
@@ -39,16 +38,21 @@ class MovieIndexView extends Component {
 
     _getTicket(movie) {
 
-        alert("ticket");
+        console.log("ticket");
+
+        this.props.navigator.push({name:"list",index : 1});
+
     }
 
+//<ActivityIndicatorIOS
+//animating={this.state.isLoading}
+//size='small'/>
+    
     //加载loading
     _renderLoading() {
         return (
                 <View style={css.loadingWrap}>
-                    <ActivityIndicatorIOS
-                        animating={this.state.isLoading}
-                        size='small'/>
+
                     <Text style={{marginLeft : 15}}>
                         加载数据中...
                     </Text>
@@ -121,9 +125,9 @@ class MovieIndexView extends Component {
                     <View>
 
                         <TouchableHighlight onPress={ () => {this._getTicket(movie)} }>
-                            <Text style={[baseCss.btn_outline,baseCss.btn_outline_red]}>
+                            <View style={[baseCss.btn_outline,baseCss.btn_outline_red]}>
                                 <Text style={baseCss.btn_outline_red_text}>购票</Text>
-                            </Text>
+                            </View>
                         </TouchableHighlight>
 
                     </View>
@@ -148,7 +152,7 @@ class MovieIndexView extends Component {
                 });
             })
             .catch((ex) => {
-                alert(ex);
+                console.log(ex);
             })
             .done();
     }
@@ -163,6 +167,7 @@ class MovieIndexView extends Component {
         else{
             temp = (
                     <ListView scrollEnabled={false}
+                              removeClippedSubviews ={true}
                               dataSource={this.state.dataSource}
                               renderRow={this._renderRow.bind(this)}>
                     </ListView>

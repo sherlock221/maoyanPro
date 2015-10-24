@@ -4,49 +4,71 @@
  */
 'use strict';
 
-var React = require('react-native');
+import React from 'react-native'
+import MainViewAndroid from "./App/View/MainViewAndroid";
+
+global.fetch = "originalFetch";
+
+
 var {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View,
-} = React;
+    AppRegistry,
+    StyleSheet,
+    Dimensions,
+    Text,
+    View,
+    Image,
+    BackAndroid,
+    TouchableHighlight,
+    Navigator
+    } = React;
+
+
+
+var initialRoute = {name: 'home'};
 
 var maoyanPro = React.createClass({
-  render: function() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Shake or press menu button for dev menu
-        </Text>
-      </View>
-    );
-  }
+
+    RouteMapper : function(route, navigationOperations, onComponentRef){
+        let _navigator = navigationOperations;
+        if (route.name === 'home') {
+            return (
+                    <MainViewAndroid ></MainViewAndroid>
+            );
+        }
+        else if(route.name === 'list'){
+            return (
+                <View>
+                    <TouchableHighlight onPress={ () => {_navigator.pop()} }>
+                            <Text>购票</Text>
+                    </TouchableHighlight>
+
+                </View>
+            );
+        }
+    },
+    render: function() {
+        return (
+            <Navigator
+                style={styles.container}
+                initialRoute={initialRoute}
+                configureScene={() => Navigator.SceneConfigs.FadeAndroid}
+                renderScene={this.RouteMapper.bind(this)}
+                />
+        )
+    }
 });
 
+
+
+
+
+
 var styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+
+    container: {
+        flex: 1
+    }
+
 });
 
 AppRegistry.registerComponent('maoyanPro', () => maoyanPro);
