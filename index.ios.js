@@ -30,7 +30,7 @@ var {
 /**
  * 项目启动类继承自 React.Component
  */
-class _11Game extends Component {
+class maoyanPro extends Component {
 
     statics:{
 
@@ -123,9 +123,7 @@ class _11Game extends Component {
                 </TabBarIOS.Item>
 
             </TabBarIOS>
-
         )
-
     }
 
     render() {
@@ -149,4 +147,4 @@ var css = StyleSheet.create({
 });
 
 
-AppRegistry.registerComponent('_11Game', () => _11Game);
+AppRegistry.registerComponent('maoyanPro', () => maoyanPro);

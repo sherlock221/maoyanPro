@@ -34,7 +34,7 @@ var styles = StyleSheet.create({
 
     movieMiddle: {
         flex: 1,
-        paddingLeft: 4
+        paddingLeft: 10
     },
     movieRight: {
         alignItems: "flex-end"
